@@ -26,6 +26,7 @@ module.exports = {
       'WithStatement',
     ],
     "no-unused-vars": "off",
+    "no-var": "off",
   },
   overrides:[
     {

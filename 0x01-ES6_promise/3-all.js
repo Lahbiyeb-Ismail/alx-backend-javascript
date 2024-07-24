@@ -11,7 +11,7 @@ export default async function handleProfileSignup() {
     const { firstName, lastName } = response[1];
 
     console.log(body, firstName, lastName);
-  } catch (error) {
+  } catch (_) {
     console.log('Signup system offline');
   }
 }

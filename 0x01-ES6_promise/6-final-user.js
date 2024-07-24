@@ -10,7 +10,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
 
     for (const res of responses) {
       if (res.status === 'fulfilled') result.push({ status: res.status, value: res.value });
-      else result.push(({ status: res.status, value: res.reason }));
+      else result.push(({ status: res.status, value: `${res.reason}` }));
     }
 
     return result;

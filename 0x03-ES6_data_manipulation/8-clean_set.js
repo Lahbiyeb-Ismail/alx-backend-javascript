@@ -4,7 +4,7 @@ export default function cleanSet(set, startString) {
   const result = [];
 
   for (const str of set) {
-    if (str.includes(startString)) result.push(str.slice(startString.length));
+    if (str.startsWith(startString)) result.push(str.slice(startString.length));
   }
 
   return result.join('-');

@@ -7,3 +7,7 @@ interface Teacher {
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   [key: string]: any;
 }
+
+interface Directors extends Teacher{
+  numberOfReports: number;
+}

@@ -1,9 +1,9 @@
-const fs = require('node:fs');
+const fs = require('node:fs/promises');
 
-function countStudents(filePath) {
+async function countStudents(filePath) {
   try {
-    const fileContent = fs.readFileSync(filePath, 'utf-8').toString().trim().split('\n');
-    const fileContentLines = fileContent.slice(1);
+    const fileContent = await fs.readFile(filePath, { encoding: 'utf8' });
+    const fileContentLines = fileContent.trim().split('\n').slice(1);
 
     const numberOfStudents = fileContentLines.length;
 

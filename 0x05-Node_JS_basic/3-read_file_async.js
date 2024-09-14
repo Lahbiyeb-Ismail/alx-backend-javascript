@@ -15,10 +15,10 @@ async function countStudents(filePath) {
       const field = studentsInfo[studentsInfo.length - 1];
 
       if (!fieldsMap[field]) {
-        fieldsMap[field] = { numberOfStudents: 0, studentsList: [] };
+        fieldsMap[field] = { studentsCount: 0, studentsList: [] };
       }
 
-      fieldsMap[field].numberOfStudents++;
+      fieldsMap[field].studentsCount++;
       fieldsMap[field].studentsList.push(studentName);
     }
 

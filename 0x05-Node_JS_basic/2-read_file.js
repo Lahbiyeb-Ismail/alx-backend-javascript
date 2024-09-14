@@ -14,15 +14,18 @@ function countStudents(filePath) {
       const studentName = studentsInfo[0];
       const field = studentsInfo[studentsInfo.length - 1];
 
-      if (!fieldsMap[field]) fieldsMap[field] = { numberOfStudents: 0, studentsList: [] };
+      if (!fieldsMap[field]) fieldsMap[field] = { studentsCount: 0, studentsList: [] };
 
-      fieldsMap[field].numberOfStudents++;
+      fieldsMap[field].studentsCount++;
       fieldsMap[field].studentsList.push(studentName);
     }
 
     console.log(`Number of students: ${numberOfStudents}`);
     for (const field in fieldsMap) {
-      console.log(`Number of students in ${field}: ${fieldsMap[field].numberOfStudents}. List: ${fieldsMap[field].studentsList.join(', ')}`);
+      const { studentsList, studentsCount } = fieldsMap[field];
+      const studentsNum = `Number of students in ${field}: ${studentsCount}.`;
+      const studentsListStr = `List: ${studentsList.join(', ')}`;
+      console.log(`${studentsNum} ${studentsListStr}`);
     }
   } catch (error) {
     throw Error('Cannot load the database');

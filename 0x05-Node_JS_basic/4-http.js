@@ -1,4 +1,4 @@
-const http = require('node:http');
+const http = require('http');
 
 const app = http.createServer((_req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });

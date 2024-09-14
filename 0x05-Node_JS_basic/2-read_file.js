@@ -1,5 +1,14 @@
 const fs = require('fs');
 
+/**
+ * Counts the number of students and their respective
+ * fields from a given file path.
+ *
+ * @param {string} filePath - The path to the file containing student
+ * information.
+ * @throws {Error} If the file does not exist or is not a valid file.
+ * @returns {void}
+ */
 function countStudents(filePath) {
   if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
     throw Error('Cannot load the database');

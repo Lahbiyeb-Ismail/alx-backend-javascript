@@ -2,8 +2,8 @@ const fs = require('fs');
 
 function countStudents(filePath) {
   try {
-    const fileContent = fs.readFileSync(filePath, 'utf-8').toString().trim().split('\n');
-    const fileContentLines = fileContent.slice(1);
+    const fileContent = fs.readFileSync(filePath, 'utf-8').toString().trim();
+    const fileContentLines = fileContent.split('\n').slice(1);
 
     const numberOfStudents = fileContentLines.length;
 
@@ -14,7 +14,9 @@ function countStudents(filePath) {
       const studentName = studentsInfo[0];
       const field = studentsInfo[studentsInfo.length - 1];
 
-      if (!fieldsMap[field]) fieldsMap[field] = { studentsCount: 0, studentsList: [] };
+      if (!fieldsMap[field]) {
+        fieldsMap[field] = { studentsCount: 0, studentsList: [] };
+      }
 
       fieldsMap[field].studentsCount++;
       fieldsMap[field].studentsList.push(studentName);

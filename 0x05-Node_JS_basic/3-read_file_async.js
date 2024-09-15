@@ -23,8 +23,9 @@ async function countStudents(filePath) {
     }
 
     console.log(`Number of students: ${numberOfStudents}`);
-    for (const field in fieldsMap) {
-      const { studentsList, studentsCount } = fieldsMap[field];
+
+    for (const [field, fieldInfo] of Object.entries(fieldsMap)) {
+      const { studentsList, studentsCount } = fieldInfo;
       const studentsNum = `Number of students in ${field}: ${studentsCount}.`;
       const studentsListStr = `List: ${studentsList.join(', ')}`;
       console.log(`${studentsNum} ${studentsListStr}`);
@@ -33,5 +34,7 @@ async function countStudents(filePath) {
     throw Error('Cannot load the database');
   }
 }
+
+countStudents('database.csv');
 
 module.exports = countStudents;

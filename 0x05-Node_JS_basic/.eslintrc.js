@@ -23,7 +23,6 @@ module.exports = {
     'no-console': 'off',
     'no-shadow': 'off',
     "no-plusplus": "off",
-    "guard-for-in": "off",
     "consistent-return": "off",
     'no-restricted-syntax': [
       'error',

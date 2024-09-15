@@ -21,10 +21,10 @@ function countStudents(filePath) {
     .split('\n');
 
   // const studentGroups = {};
-  // const dbFieldNames = fileLines[0].split(',');
+  // const FieldsNames = fileLines[0].split(',');
   // const studentPropNames = dbFieldNames.slice(0, dbFieldNames.length - 1);
 
-  // for (const line of fileLines.slice(1)) {
+  // for (const line of fileContent.slice(1)) {
   //   const studentRecord = line.split(',');
   //   const studentPropValues = studentRecord.slice(0, studentRecord.length - 1);
   //   const field = studentRecord[studentRecord.length - 1];
@@ -66,8 +66,9 @@ function countStudents(filePath) {
   }
 
   console.log(`Number of students: ${numberOfStudents}`);
-  for (const field in fieldsMap) {
-    const { studentsList, studentsCount } = fieldsMap[field];
+
+  for (const [field, fieldInfo] of Object.entries(fieldsMap)) {
+    const { studentsList, studentsCount } = fieldInfo;
     const studentsNum = `Number of students in ${field}: ${studentsCount}.`;
     const studentsListStr = `List: ${studentsList.join(', ')}`;
     console.log(`${studentsNum} ${studentsListStr}`);

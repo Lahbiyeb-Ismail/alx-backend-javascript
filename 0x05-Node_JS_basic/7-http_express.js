@@ -56,8 +56,8 @@ app.get('/', (_req, res) => {
 
 app.get('/students', (_req, res) => {
   countStudents(FILE_PATH).then((data) => {
-    res.send(data);
-  });
+    res.send(`This is the list of our students\n${data}`);
+  }).catch(() => res.send('This is the list of our students\nCannot load the database'));
 });
 
 app.listen(PORT, () => {

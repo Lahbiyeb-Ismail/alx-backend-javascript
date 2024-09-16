@@ -3,7 +3,9 @@ import readDatabase from '../utils';
 const FILE_PATH = process.argv[2] || '';
 const VALID_MAJORS = ['CS', 'SWE'];
 
-// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
+/**
+ * Controller class for handling student-related operations.
+ */
 class StudentsController {
   static getAllStudents(req, response) {
     readDatabase(FILE_PATH).then((studentGroups) => {

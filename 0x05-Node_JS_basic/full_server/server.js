@@ -1,10 +1,10 @@
 import express from 'express';
-import router from './routes';
+import routes from './routes';
 
 const app = express();
 const PORT = 1245;
 
-app.use(router);
+routes(app);
 
 app.listen(PORT, () => {
   console.log(`Server listening on PORT ${PORT}`);

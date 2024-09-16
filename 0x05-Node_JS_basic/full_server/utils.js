@@ -1,5 +1,12 @@
 import fs from 'fs';
 
+/**
+ * Reads a database file and returns the data as an object grouped by a specific field.
+ * @param {string} filePath - The path to the database file.
+ * @returns {Promise<Object>} A promise that resolves to an object containing
+ * the data grouped by a specific field.
+ * @throws {Error} If the database file cannot be loaded.
+ */
 function readDatabase(filePath) {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf-8', (err, data) => {

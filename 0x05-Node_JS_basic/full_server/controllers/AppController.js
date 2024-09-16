@@ -1,6 +1,11 @@
-// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
+/**
+ * AppController class.
+ *
+ * @class
+ * @classdesc Represents the controller for the application.
+ */
 class AppController {
-  static getHomepage(_req, res) {
+  static getHomepage(req, res) {
     res.status(200).send('Hello Holberton School!');
   }
 }

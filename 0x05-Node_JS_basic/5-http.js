@@ -46,7 +46,7 @@ function countStudents(filePath) {
   });
 }
 
-const filePath = process.argv[2];
+const filePath = process.argv.length > 2 ? process.argv[2] : '';
 
 const app = http.createServer(async (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });

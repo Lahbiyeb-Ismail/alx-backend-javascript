@@ -57,7 +57,7 @@ const app = http.createServer(async (req, res) => {
 
     countStudents(filePath).then((data) => {
       res.end(data.join('\n'));
-    }).catch(() => res.send('This is the list of our students\nCannot load the database'));
+    }).catch(() => res.send('Cannot load the database'));
   }
 });
 

@@ -6,11 +6,10 @@ import StudentsController from '../controllers/StudentsController';
  * given Express application.
  * @param {Express} app The Express application.
  */
-const mapRoutes = (app) => {
+const appRoutes = (app) => {
   app.get('/', AppController.getHomepage);
   app.get('/students', StudentsController.getAllStudents);
   app.get('/students/:major', StudentsController.getAllStudentsByMajor);
 };
 
-export default mapRoutes;
-module.exports = mapRoutes;
+export default appRoutes;

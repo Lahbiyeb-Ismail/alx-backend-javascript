@@ -1,11 +1,12 @@
 import fs from 'fs';
 
+
 /**
- * Reads the data of students in a CSV data file.
- * @param {String} dataPath The path to the CSV data file.
- * @returns {Promise<{
- *   String: {firstname: String, lastname: String, age: number}[]
- * }>}
+ * Reads a database file and returns the data as an object.
+ * @param {string} dataPath - The path to the database file.
+ * @returns {Promise<Object>} A promise that resolves to an object
+ * representing the data in the database file.
+ * @throws {Error} If the database file cannot be loaded.
  */
 const readDatabase = (dataPath) => new Promise((resolve, reject) => {
   if (!dataPath) {
@@ -45,4 +46,3 @@ const readDatabase = (dataPath) => new Promise((resolve, reject) => {
 });
 
 export default readDatabase;
-module.exports = readDatabase;

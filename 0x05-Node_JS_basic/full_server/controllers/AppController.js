@@ -1,5 +1,5 @@
 /**
- * Contains the miscellaneous route handlers.
+ * AppController class represents the controller for the application.
  */
 class AppController {
   static getHomepage(request, response) {
@@ -8,4 +8,3 @@ class AppController {
 }
 
 export default AppController;
-module.exports = AppController;

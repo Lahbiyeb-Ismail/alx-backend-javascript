@@ -4,19 +4,17 @@ import readDatabase from '../utils';
  * The list of supported majors.
  */
 const VALID_MAJORS = ['CS', 'SWE'];
+const DATA_FILE_PATH = process.argv[2] || ""
+
 
 /**
- * Contains the student-related route handlers.
+ * Controller class for handling student-related operations.
  */
 class StudentsController {
   static getAllStudents(request, response) {
-    const dataPath = process.argv.length > 2 ? process.argv[2] : '';
-
-    readDatabase(dataPath)
+    readDatabase(DATA_FILE_PATH)
       .then((studentGroups) => {
         const responseParts = ['This is the list of our students'];
-        // A comparison function for ordering a list of strings in ascending
-        // order by alphabetic order and case insensitive
         const cmpFxn = (a, b) => {
           if (a[0].toLowerCase() < b[0].toLowerCase()) {
             return -1;
@@ -70,4 +68,3 @@ class StudentsController {
 }
 
 export default StudentsController;
-module.exports = StudentsController;

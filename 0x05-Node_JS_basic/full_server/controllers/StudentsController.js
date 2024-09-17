@@ -6,17 +6,12 @@ import readDatabase from '../utils';
 const VALID_MAJORS = ['CS', 'SWE'];
 
 /**
- * The file path for the data file.
- * @type {string}
- */
-const DATA_FILE_PATH = process.argv[2] || ""
-
-/**
  * Controller class for handling student-related operations.
  */
 class StudentsController {
   static getAllStudents(request, response) {
-    readDatabase(DATA_FILE_PATH)
+    const dataPath = process.argv.length > 2 ? process.argv[2] : '';
+    readDatabase(dataPath)
       .then((studentGroups) => {
         const responseParts = ['This is the list of our students'];
         const cmpFxn = (a, b) => {

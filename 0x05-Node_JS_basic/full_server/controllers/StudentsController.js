@@ -1,35 +1,41 @@
 import readDatabase from '../utils';
 
-const FILE_PATH = process.argv[2] || '';
+/**
+ * The list of supported majors.
+ */
 const VALID_MAJORS = ['CS', 'SWE'];
 
 /**
- * Controller class for handling student-related operations.
+ * Contains the student-related route handlers.
  */
 class StudentsController {
-  static getAllStudents(req, response) {
-    readDatabase(FILE_PATH).then((studentGroups) => {
-      const responseParts = ['This is the list of our students'];
+  static getAllStudents(request, response) {
+    const dataPath = process.argv.length > 2 ? process.argv[2] : '';
 
-      const cmpFxn = (a, b) => {
-        if (a[0].toLowerCase() < b[0].toLowerCase()) {
-          return -1;
-        }
-        if (a[0].toLowerCase() > b[0].toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      };
+    readDatabase(dataPath)
+      .then((studentGroups) => {
+        const responseParts = ['This is the list of our students'];
+        // A comparison function for ordering a list of strings in ascending
+        // order by alphabetic order and case insensitive
+        const cmpFxn = (a, b) => {
+          if (a[0].toLowerCase() < b[0].toLowerCase()) {
+            return -1;
+          }
+          if (a[0].toLowerCase() > b[0].toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        };
 
-      for (const [field, group] of Object.entries(studentGroups).sort(cmpFxn)) {
-        responseParts.push([
-          `Number of students in ${field}: ${group.length}.`,
-          'List:',
-          group.map((student) => student.firstname).join(', '),
-        ].join(' '));
-      }
-      response.status(200).send(responseParts.join('\n'));
-    })
+        for (const [field, group] of Object.entries(studentGroups).sort(cmpFxn)) {
+          responseParts.push([
+            `Number of students in ${field}: ${group.length}.`,
+            'List:',
+            group.map((student) => student.firstname).join(', '),
+          ].join(' '));
+        }
+        response.status(200).send(responseParts.join('\n'));
+      })
       .catch((err) => {
         response
           .status(500)
@@ -64,3 +70,4 @@ class StudentsController {
 }
 
 export default StudentsController;
+module.exports = StudentsController;

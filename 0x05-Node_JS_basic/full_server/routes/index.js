@@ -2,14 +2,15 @@ import AppController from '../controllers/AppController';
 import StudentsController from '../controllers/StudentsController';
 
 /**
- * Defines the routes for the application.
- *
- * @param {Object} app - The Express app object.
+ * Binds the routes to the appropriate handler in the
+ * given Express application.
+ * @param {Express} app The Express application.
  */
-const routes = (app) => {
+const mapRoutes = (app) => {
   app.get('/', AppController.getHomepage);
   app.get('/students', StudentsController.getAllStudents);
   app.get('/students/:major', StudentsController.getAllStudentsByMajor);
 };
 
-export default routes;
+export default mapRoutes;
+module.exports = mapRoutes;

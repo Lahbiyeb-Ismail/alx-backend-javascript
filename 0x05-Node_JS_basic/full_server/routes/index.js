@@ -12,4 +12,4 @@ const appRoutes = (app) => {
   app.get('/students/:major', StudentsController.getAllStudentsByMajor);
 };
 
-export default appRoutes;
+module.exports = appRoutes;

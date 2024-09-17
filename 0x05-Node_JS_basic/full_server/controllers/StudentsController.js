@@ -4,8 +4,12 @@ import readDatabase from '../utils';
  * The list of supported majors.
  */
 const VALID_MAJORS = ['CS', 'SWE'];
-const DATA_FILE_PATH = process.argv[2] || ""
 
+/**
+ * The file path for the data file.
+ * @type {string}
+ */
+const DATA_FILE_PATH = process.argv[2] || ""
 
 /**
  * Controller class for handling student-related operations.
@@ -67,4 +71,4 @@ class StudentsController {
   }
 }
 
-export default StudentsController;
+module.exports = StudentsController;

@@ -1,6 +1,5 @@
 import fs from 'fs';
 
-
 /**
  * Reads a database file and returns the data as an object.
  * @param {string} dataPath - The path to the database file.
@@ -45,4 +44,4 @@ const readDatabase = (dataPath) => new Promise((resolve, reject) => {
   }
 });
 
-export default readDatabase;
+module.exports = readDatabase;

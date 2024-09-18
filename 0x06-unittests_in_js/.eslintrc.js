@@ -24,6 +24,10 @@ module.exports = {
     'no-shadow': 'off',
     "no-plusplus": "off",
     "consistent-return": "off",
+    "jest/no-hooks": "off",
+    "jest/prefer-expect-assertions": "off",
+    "no-unused-expressions": "off",
+    "jest/valid-expect": "off",
     'no-restricted-syntax': [
       'error',
       'LabeledStatement',

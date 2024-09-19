@@ -1,43 +1,36 @@
-const request = require('supertest');
+const request = require('request');
 const { expect } = require('chai');
-const app = require('./api');
 
-describe('index page', () => {
-  it('should return status code 200', () => new Promise((done) => {
-    request(app)
-      .get('/')
-      .expect(200, done);
+describe('aPI integration test', () => {
+  const API_URL = 'http://localhost:7865';
+
+  it('gET / returns correct response', () => new Promise((done) => {
+    request.get(`${API_URL}/`, (_err, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(body).to.be.equal('Welcome to the payment system');
+      done();
+    });
   }));
 
-  it('should return the correct message', () => new Promise((done) => {
-    request(app)
-      .get('/')
-      .end((err, res) => {
-        expect(res.text).to.equal('Welcome to the payment system');
-        done();
-      });
-  }));
-});
-
-describe('cart page', () => {
-  it('should return status code 200 when :id is a number', () => new Promise((done) => {
-    request(app)
-      .get('/cart/123')
-      .expect(200, done);
+  it('gET /cart/:id returns correct response for valid :id', () => new Promise((done) => {
+    request.get(`${API_URL}/cart/47`, (_err, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(body).to.be.equal('Payment methods for cart 47');
+      done();
+    });
   }));
 
-  it('should return the correct message when :id is a number', () => new Promise((done) => {
-    request(app)
-      .get('/cart/123')
-      .end((err, res) => {
-        expect(res.text).to.equal('Payment methods for cart 123');
-        done();
-      });
+  it('gET /cart/:id returns 404 response for negative number values in :id', () => new Promise((done) => {
+    request.get(`${API_URL}/cart/-47`, (_err, res) => {
+      expect(res.statusCode).to.be.equal(404);
+      done();
+    });
   }));
 
-  it('should return status code 404 when :id is not a number', () => new Promise((done) => {
-    request(app)
-      .get('/cart/abc')
-      .expect(404, done);
+  it('gET /cart/:id returns 404 response for non-numeric values in :id', () => new Promise((done) => {
+    request.get(`${API_URL}/cart/d200-44a5-9de6`, (_err, res) => {
+      expect(res.statusCode).to.be.equal(404);
+      done();
+    });
   }));
 });
